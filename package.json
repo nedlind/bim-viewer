@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/nedlind/bim-viewer/issues"
   },
-  "homepage": "https://github.com/nedlind/bim-viewer#readme"
+  "homepage": "https://github.com/nedlind/bim-viewer#readme",
+  "dependencies": {
+    "three": "^0.135.0",
+    "web-ifc-viewer": "^1.0.213"
+  },
+  "devDependencies": {
+    "rollup": "^2.79.1"
+  }
 }
