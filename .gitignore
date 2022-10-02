@@ -1,3 +1,6 @@
+# Rollup config
+rollup.config.js
+
 # Logs
 logs
 *.log
