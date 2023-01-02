@@ -7,7 +7,10 @@ import {
     Scene,
     WebGLRenderer,
  } from 'three';
+
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+import { IFCLoader } from 'web-ifc-three/IFCLoader';
 
 // Create Three.js scene
 const scene = new Scene();
@@ -19,7 +22,7 @@ const size = {
 // Create camera
 const camera = new PerspectiveCamera(75, size.width / size.height);
 camera.position.z = 15;
-camera.position.y = 13:
+camera.position.y = 13;
 camera.position.x = 8;
 
 // Create lights
@@ -66,3 +69,18 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(size.width, size.height);
 });
+
+// File input
+const input = document.getElementById('file-input');
+const ifcLoader = new IFCLoader();
+
+input.addEventListener(
+    'change',
+    async (changed) => {
+        const ifcURL = URL.createObjectURL(changed.target.files[0]);
+        await ifcLoader.ifcManager.setWasmPath('./webifc-wasm/')
+        const model = await ifcLoader.loadAsync(ifcURL);
+        scene.add(model);
+    },
+    false
+);
