@@ -2,7 +2,7 @@
   "name": "bim-viewer",
   "version": "0.0.1",
   "description": "IFC.js course project",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build": "npx rollup -c",
     "watch": "npx rollup -c -w"
