@@ -90988,6 +90988,38 @@ class IFCLoader extends Loader {
 
 }
 
+const projects = [
+    {
+        projectName : "Project 1",
+        projectNumber : "123456",
+        projectLink : "./ifc-files/haus.ifc",
+        thumbnailImage : "./media/thumbnail.png"
+    },
+    {
+        projectName : "Project 2",
+        projectNumber : "156842",
+        projectLink : "./ifc-files/rebar.ifc",
+        thumbnailImage : "./media/thumbnail.png"
+    }
+];
+
+// Get project path
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const pNum = urlParams.get('project');
+
+function getProjectByProjectNumber(projectNumber, projectList) {
+    for (const p in projectList) {
+        if (projectList[p].projectNumber === projectNumber) {
+            return projectList[p]
+        }
+    }
+}
+
+const project = getProjectByProjectNumber(pNum, projects);
+
 // Create Three.js scene
 const scene = new Scene();
 const size = {
@@ -91046,17 +91078,11 @@ window.addEventListener('resize', () => {
     renderer.setSize(size.width, size.height);
 });
 
-// File input
-const input = document.getElementById('file-input');
-const ifcLoader = new IFCLoader();
 
-input.addEventListener(
-    'change',
-    async (changed) => {
-        const ifcURL = URL.createObjectURL(changed.target.files[0]);
-        await ifcLoader.ifcManager.setWasmPath('./webifc-wasm/');
-        const model = await ifcLoader.loadAsync(ifcURL);
-        scene.add(model);
-    },
-    false
-);
+async function loadIfc(){
+    const ifcLoader = new IFCLoader();
+    await ifcLoader.ifcManager.setWasmPath("./webifc-wasm/");
+    const model = await ifcLoader.loadAsync(project.projectLink);
+    scene.add(model);
+}
+loadIfc();

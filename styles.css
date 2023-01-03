@@ -5,7 +5,72 @@
 }
 
 html, body {
-    overflow: hidden;
+    /* overflow: hidden; */
+	min-height: 100%;
+	background: #fff;
+	color: #000;
+}
+
+div {
+    height: auto;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 2rem;
+    /* display: inline; */
+}
+
+h2 {
+    font-weight: 400;
+    display: inline;
+}
+
+h3 {
+    font-weight: 200;
+    display: inline;
+    padding-left: 0.5rem;
+}
+
+iframe {
+    width: 100%;
+    height:80vh;
+    border: 0;
+    background-color:lightgrey;
+}
+
+.center {
+    margin: auto;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-content:center;
+}
+
+.card {
+    background-color:goldenrod;
+    padding: 0.5rem 0.5rem;
+    margin: 0.5rem;
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.card > img {
+    width: 100%;
+}
+
+.home {
+    padding: 2em;
 }
 
 #three-canvas {
@@ -13,8 +78,5 @@ html, body {
     top: 0;
     left: 0;
     outline: none;
-}
-
-#file-input {
-    position: absolute;
+    z-index: -1;
 }
